@@ -45,7 +45,7 @@ pip install pandas numpy requests
 
 ## Script summary
 
-- `src/fetch.py`: downloads raw AEMO market datasets for a selected year and region.
+- `src/fetch_aemo.py`: downloads raw AEMO market datasets for a selected year and region.
 - `src/clean_aemo.py`: cleans the raw AEMO CSV into a compact, analysis-ready table.
 - `src/clean_sgsc.py`: converts SGSC wide-form interval data into long-form per-customer readings.
 - `src/unify.py`: merges both sources, engineers features, and creates train/validation/test output files.

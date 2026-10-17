@@ -10,8 +10,8 @@ This folder stores the source datasets before any cleaning or feature engineerin
 
 1. Download the raw AEMO data:
    ```bash
-   cd data_processing
-   python src/fetch.py
+   # from the root of the project
+   python src/fetch_aemo.py
    ```
    This writes the raw AEMO CSV into `data/raw/`.
 

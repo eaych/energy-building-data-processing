@@ -1,3 +1,19 @@
+"""Clean the SGSC interval-load file into a long-format customer dataset.
+
+Input:
+data/raw/sgsc/interval load data/data_3_groups.csv: wide-format customer interval load data.
+
+Output:
+data/cleaned/sgsc_cleaned.csv: a long-format dataset with one row per customer and 30-minute interval.
+
+sgsc_cleaned.csv:
+
+ Column            Description
+ CUSTOMER_ID       customer or building identifier                             
+ KWH_READING       electricity usage in kilowatt-hours for the interval        
+ DATETIME_30MIN    timestamp rounded to the nearest 30-minute settlement period
+"""
+
 import pandas as pd
 import numpy as np
 from pathlib import Path
@@ -10,9 +26,10 @@ RAW_DATA_DIR = DATA_DIR / "raw"
 
 CLEANED_DATA_DIR.mkdir(parents=True, exist_ok=True)
 
+sgsc_path = RAW_DATA_DIR / "sgsc" / "interval load data" / "data_3_groups.csv"
+
 def clean_sgsc(sample_size=1500):
     print("Cleaning SGSC interval data...")
-    sgsc_path = RAW_DATA_DIR / "ClusteredSGSC" / "interval load data" / "data_3_groups.csv"
     
     print(f"Reading SGSC data from {sgsc_path}...")
     # Read the wide-format dataset

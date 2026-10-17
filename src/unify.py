@@ -1,3 +1,31 @@
+"""Merge the clean AEMO and SGSC datasets, add time and lag features, and split them for model training.
+
+Input:
+data/cleaned/sgsc_cleaned.csv: customer energy readings by timestamp and customer.
+data/cleaned/aemo_cleaned.csv: market price and demand data by timestamp.
+
+Output:
+data/cleaned/data_learn.csv: learning split for model training.
+data/cleaned/data_finetune.csv: tuning split for validation.
+data/cleaned/data_test.csv: hold-out split for final evaluation.
+
+data_learn.csv / data_finetune.csv / data_test.csv:
+
+ Column            Description
+ DATETIME_30MIN    timestamp aligned across market and customer readings       
+ CUSTOMER_ID       customer or building identifier                             
+ KWH_READING       customer electricity usage in kWh                           
+ PRICE_AUD_MWH     regional price in AUD per MWh                               
+ DEMAND_MW         total national demand in MW                                 
+ HOUR              hour of day                                                  
+ DAY_OF_WEEK       day of week (0 = Monday, 6 = Sunday)                       
+ IS_WEEKEND        weekend flag (1 = weekend, 0 = weekday)                     
+ MONTH             month of year                                                
+ KWH_LAG_1HR       consumption from one hour earlier                             
+ KWH_LAG_3DAYS     consumption from three days earlier                          
+ KWH_LAG_1WEEK     consumption from one week earlier                            
+"""
+
 import pandas as pd
 import numpy as np
 from pathlib import Path

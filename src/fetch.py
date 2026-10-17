@@ -1,3 +1,25 @@
+"""Download raw AEMO market data for a specified year and region.
+
+Input:
+year: integer year to fetch, such as 2013.
+region: AEMO region code, defaulting to NSW1.
+
+Output:
+data/aemo_nsw_2013.csv: raw AEMO price and demand export saved from the public API.
+
+aemo_nsw_2013.csv:
+
+ Column            Description
+ REGION            The region of the National Electricity Market (NEM) the data applies to. The NEM is divided  
+                   into five regions: NSW, VIC, QLD, SA, and TAS.                                             
+ SETTLEMENTDATE    The date and time for which the data is recorded, typically in 30-minute intervals.         
+ TOTALDEMAND       The total electricity consumption in a region, measured in megawatts (MW).               
+ RRP               The wholesale electricity price for each region in the NEM, calculated every 5 minutes and 
+                   then averaged over 30-minute intervals.                                                 
+ PERIODTYPE        Indicates whether the data corresponds to a normal trading period (TRADE) or an          
+                   exceptional circumstance such as a system restart (NON-TRADE).                          
+"""
+
 # Downloads AEMO data for a specified year and region, saving it to a CSV file in ../data/
 
 import requests

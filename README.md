@@ -1,3 +1,24 @@
+## Data Dictionary
+
+The training, validation, and test files created by `src/unify.py` are the primary datasets. Each contains the same schema, with rows split by customer group.
+
+### `data_learn.csv`, `data_finetune.csv`, `data_test.csv`
+
+| Column | Description |
+| --- | --- |
+| `DATETIME_30MIN` | Timestamp for the 30-minute interval shared across the SGSC and AEMO datasets. |
+| `CUSTOMER_ID` | Unique identifier for the customer or building in the SGSC dataset. |
+| `KWH_READING` | Electricity consumption for that customer during the interval, measured in kWh. |
+| `PRICE_AUD_MWH` | Regional reference price in Australian dollars per megawatt-hour. |
+| `DEMAND_MW` | Total regional electricity demand in megawatts. |
+| `HOUR` | Hour of the day (0 to 23) for the interval. |
+| `DAY_OF_WEEK` | Day of the week index where Monday = 0 and Sunday = 6. |
+| `IS_WEEKEND` | Binary flag indicating whether the interval falls on a weekend (1) or weekday (0). |
+| `MONTH` | Month of the year (1 to 12). |
+| `KWH_LAG_1HR` | Energy consumption from 1 hour earlier, used as a short-term lag feature. |
+| `KWH_LAG_3DAYS` | Energy consumption from 3 days earlier, used as a medium-range lag feature. |
+| `KWH_LAG_1WEEK` | Energy consumption from 1 week earlier, used as a longer-term lag feature. |
+
 ## Requirements
 
 The project uses Python 3 and depends on the following packages:

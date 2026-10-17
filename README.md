@@ -63,7 +63,7 @@ This project uses and adapts publicly available datasets from the following sour
 ## Folder structure
 
 ```text
-data_processing/
+root/
 ├── data/
 │   ├── cleaned/
 │   │   ├── aemo_cleaned.csv
